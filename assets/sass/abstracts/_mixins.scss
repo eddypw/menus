@@ -1,0 +1,11 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+@mixin font-face($name, $type, $weight) {
+    @font-face {
+        font-family: "#{$name}";
+        font-weight: $weight;
+        src: url("#{$asset-base-path}/fonts/#{$name}/#{$name}-#{$type}.ttf") format("truetype");
+    }
+}

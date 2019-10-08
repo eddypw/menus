@@ -1,0 +1,28 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    // font-family: 'OpenSans';
+    font-weight: 400 !important;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    background-image: image('banner.jpg');
+}
+
+a {
+    color: #000000;
+    &:hover{
+        text-decoration: none;
+    }
+    &:focus{
+        outline: 0
+    }
+}
+input:focus,
+.btn:focus{
+    @extend %focus;
+}

@@ -1,0 +1,287 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+$menu-color-main: #ffffff;
+$menu-color-active: #000000;
+$menu-color-link: #000000;
+
+$button-height: 27px;
+$button-width: 35px;
+
+header{
+    @media only screen and (min-width: 768px){
+        .desktop{
+            display: block;
+            &.fixed-top {
+                background-color: white;
+            }
+        }
+        .mobile{
+            display: none;
+        }
+        .top-header{
+            display: flex;
+            justify-content: space-between;
+            padding: 0 50px;
+            transition: .2s all;
+            position: relative;
+            z-index: 10000;
+        }
+        .logo {
+            width: 120px;
+        }
+        ul{
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+        li {
+            display: inline-block;
+            a{
+                padding: 20px;
+                display: block;
+                text-transform: uppercase;
+            }
+        }
+        .center {
+            display: flex;
+            align-items: center;
+        }
+        &:hover{
+            background-color: white;
+            a{
+                color: black;
+            }
+        }
+        &.active{
+            background-color: white;
+        }
+        .mega-menu{
+            text-transform: uppercase;
+            & > div {
+                // display: none;
+                position: absolute;
+                width: 100%;
+                // transform: translateY(-440px);
+                transform: translateY(-520px);
+                transition: .5s all;
+                padding: 50px 0;
+                background-color: white;
+            }
+        }
+        li a::after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            display: block;
+            background-color: black;
+            transform: scaleX(0);
+            transition: .5s all;
+        }
+        li a:hover::after {
+            transform: scaleX(1);
+        }
+    }
+    @media only screen and (max-width: 767px) {
+        .desktop{
+            display: none;
+        }
+        .mobile{
+            display: block;
+            transition: .5s all;
+            i.fa {
+                color: #464646;
+            }
+        }
+        .fixed-top.mobile {
+            background-color: white;
+            #toggle > span {
+                background-color: black;
+            }
+        }
+        input.form-control {
+            border: 0;
+        }
+        button.search {
+            background-color: transparent;
+            border: 0;
+        }
+        .input-group {
+            border-bottom: 1px solid;
+        }
+        .menu {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            z-index: 1000;
+            position: relative;
+        }
+        .button_container {
+            position: relative;
+            top: 5%;
+            left: 2%;
+            height: $button-height;
+            width: $button-width;
+            cursor: pointer;
+            z-index: 100;
+            transition: opacity .25s ease;
+        
+            &:hover {
+                opacity: .7;
+            }
+        
+            &.active {
+                .top {
+                    transform: translateY(11px) translateX(0) rotate(45deg);
+                    background: $menu-color-active;
+                }
+                .middle {
+                    opacity: 0;
+                    background: $menu-color-active;
+                }
+                
+                .bottom {
+                    transform: translateY(-11px) translateX(0) rotate(-45deg);
+                    background: $menu-color-active;
+                }
+            }
+        
+            span {
+                background: $menu-color-main;
+                border: none;
+                height: 5px;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition:  all .35s ease;
+                cursor: pointer;
+                
+                &:nth-of-type(2) {
+                    top: 11px;
+                }
+                
+                &:nth-of-type(3) {
+                    top: 22px;
+                }
+            }
+        }
+        .overlay {
+            position: fixed;
+            background: $menu-color-main;
+            // top: 60px;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0%;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity .35s, visibility .35s, height .35s;
+            overflow: hidden;
+        
+            &.open {
+                opacity: 1;
+                visibility: visible;
+                height: 100%;
+                
+                li {
+                    animation: fadeInRight .5s ease forwards;
+                    animation-delay: .35s;
+                
+                    &:nth-of-type(2) {
+                        animation-delay: .4s;
+                    }
+                    &:nth-of-type(3) {
+                        animation-delay: .45s;
+                    }
+                    &:nth-of-type(4) {
+                        animation-delay: .50s;
+                    }
+                }
+            }
+            nav {
+                position: relative;
+                height: 70%;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 20px;
+                font-weight: 400;
+                text-align: center;
+            }
+            ul {
+                list-style: none;
+                padding: 0;
+                margin: 0 auto;
+                display: inline-block;
+                position: relative;
+                height: 100%; 
+                width: 80%;
+                
+                li {
+                    display: block;
+                    position: relative;
+                    opacity: 0;
+                
+                    a {
+                        display: block;
+                        position: relative;
+                        color: $menu-color-link;
+                        text-decoration: none;
+                        overflow: hidden;
+                        padding: 10px 12px;
+
+                        // &:hover:after,
+                        // &:focus:after,
+                        // &:active:after {
+                        //     width: 100%;
+                        // }
+                        
+                        // &:after {
+                        //     content: '';
+                        //     position: absolute;
+                        //     bottom: 0;
+                        //     left: 50%;
+                        //     width: 0%;
+                        //     transform: translateX(-50%);
+                        //     height: 3px;
+                        //     background: $menu-color-link;
+                        //     transition: .35s;
+                        // }
+                    }
+                }
+            }
+        }
+        li.sosmed {
+            display: flex !important;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            a {
+                padding: 5px 10px;
+            }
+        }
+        .sub-menu {
+            height: 0px;
+            display: block;
+            overflow: hidden;
+            transition: 0.3s all;
+            background-color: whitesmoke;
+            &.open{
+                height: 230px;
+                padding: 15px 0;
+            }
+        }
+        
+        @keyframes fadeInRight {
+            0% {
+                opacity: 0;
+                left: 20%;
+            }
+            100% {
+                opacity: 1;
+                left: 0;
+            }
+        }
+    }
+}

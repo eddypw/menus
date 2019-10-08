@@ -1,0 +1,15 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+$text-color: rgb(34, 34, 34) !default;
+$primary-color: rgb(229, 0, 80) !default;
+$secondary-color: rgb(0, 53, 229) !default;
+
+$base-url : 'http://localhost/edy/';
+
+%focus{
+    border:0 !important;
+    outline: 0 !important;
+    box-shadow: none !important;
+}
